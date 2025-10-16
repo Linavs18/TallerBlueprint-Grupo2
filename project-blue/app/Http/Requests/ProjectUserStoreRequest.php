@@ -26,4 +26,11 @@ class ProjectUserStoreRequest extends FormRequest
             'index' => ['required', 'string', 'unique:project_users,index'],
         ];
     }
+
+    public function attributes(){
+        return [
+            'role' => 'rol',
+            'index' => 'principal'
+        ];
+    }
 }

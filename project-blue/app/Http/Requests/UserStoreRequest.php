@@ -27,4 +27,12 @@ class UserStoreRequest extends FormRequest
             'belongsToMany' => ['required', 'string'],
         ];
     }
+
+    public function attributes(){
+        return [
+            'name' => 'nombre',
+            'email' => 'correo',
+            'password' => 'contraseña'
+        ];
+    }
 }

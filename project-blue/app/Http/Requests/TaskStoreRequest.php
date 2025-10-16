@@ -28,4 +28,12 @@ class TaskStoreRequest extends FormRequest
             'belongsTo' => ['required', 'string'],
         ];
     }
+
+    public function attributes(){
+        return [
+            'name' => 'nombre',
+            'description' => 'descripcion',
+            'status' => 'estado',
+        ];
+    }
 }

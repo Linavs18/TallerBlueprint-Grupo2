@@ -28,4 +28,11 @@ class ProjectUpdateRequest extends FormRequest
             'belongsToMany' => ['required', 'string'],
         ];
     }
+
+    public function attributes(){
+        return [
+            'title' => 'titulo',
+            'description' => 'descripcion'
+        ];
+    }
 }
