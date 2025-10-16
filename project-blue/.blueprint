@@ -1,0 +1,40 @@
+created:
+    - app/Http/Controllers/UserController.php
+    - app/Http/Controllers/ProjectController.php
+    - app/Http/Controllers/TaskController.php
+    - app/Http/Controllers/ProjectUserController.php
+    - database/factories/UserFactory.php
+    - database/factories/ProjectFactory.php
+    - database/factories/TaskFactory.php
+    - database/factories/ProjectUserFactory.php
+    - database/migrations/2025_10_16_135119_create_users_table.php
+    - database/migrations/2025_10_16_135120_create_projects_table.php
+    - database/migrations/2025_10_16_135121_create_tasks_table.php
+    - database/migrations/2025_10_16_135122_create_project_users_table.php
+    - app/Models/User.php
+    - app/Models/Project.php
+    - app/Models/Task.php
+    - app/Models/ProjectUser.php
+    - tests/Feature/Http/Controllers/UserControllerTest.php
+    - tests/Feature/Http/Controllers/ProjectControllerTest.php
+    - tests/Feature/Http/Controllers/TaskControllerTest.php
+    - tests/Feature/Http/Controllers/ProjectUserControllerTest.php
+    - resources/views/user/show.blade.php
+    - resources/views/project/show.blade.php
+    - resources/views/task/show.blade.php
+updated:
+    - routes/web.php
+skipped:
+    - resources/views/user/index.blade.php
+    - resources/views/project/index.blade.php
+    - resources/views/project/create.blade.php
+    - resources/views/project/edit.blade.php
+    - resources/views/task/index.blade.php
+    - resources/views/task/create.blade.php
+    - resources/views/task/edit.blade.php
+    - resources/views/projectUser/index.blade.php
+models:
+    User: { name: 'string:255', email: 'string:255', password: 'string:255', timestamps: timestamps }
+    Project: { title: 'string:255', description: 'text nullable', owner_id: 'id foreign:users.id onDelete:cascade onUpdate:cascade', timestamps: timestamps, softdeletes: softDeletes }
+    Task: { name: 'string:255', description: 'text nullable', status: 'enum:pendiente,en_progreso,completado,cancelado default:pendiente', due_date: 'date nullable', project_id: 'id foreign:projects.id onDelete:cascade onUpdate:cascade', timestamps: timestamps, softdeletes: softDeletes }
+    ProjectUser: { project_id: 'id foreign:projects.id onDelete:cascade onUpdate:cascade', user_id: 'id foreign:users.id onDelete:cascade onUpdate:cascade', role: 'string:50 default:member', timestamps: timestamps, indexes: [{ unique: 'project_id, user_id' }] }

@@ -1,0 +1,43 @@
+models:
+  User:
+    name: string:255
+    email: string:255
+    password: string:255
+    timestamps
+    
+  Project:
+    title: string:255
+    description: text nullable
+    owner_id: id foreign:users.id onDelete:cascade onUpdate:cascade
+    timestamps
+    softDeletes
+    
+  Task:
+    name: string:255
+    description: text nullable
+    status: enum:pendiente,en_progreso,completado,cancelado default:pendiente
+    due_date: date nullable
+    project_id: id foreign:projects.id onDelete:cascade onUpdate:cascade
+    timestamps
+    softDeletes
+    
+  ProjectUser:
+    project_id: id foreign:projects.id onDelete:cascade onUpdate:cascade
+    user_id: id foreign:users.id onDelete:cascade onUpdate:cascade
+    role: string:50 default:member
+    timestamps
+    indexes:
+      - unique: project_id, user_id
+
+controllers:
+  User:
+    resource: index, show, store, update, destroy
+    
+  Project:
+    resource: index, create, store, show, edit, update, destroy
+    
+  Task:
+    resource: index, create, store, show, edit, update, destroy
+    
+  ProjectUser:
+    resource: index, store, update, destroy
