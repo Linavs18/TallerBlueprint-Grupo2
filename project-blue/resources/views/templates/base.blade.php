@@ -35,7 +35,7 @@
     <div class="wrapper">
         @include('templates/nav')
 
-         <div class="main-panel">
+        <div class="main-panel">
             <!-- Navbar -->
             @include('templates/topbar')
             <!-- End Navbar -->
