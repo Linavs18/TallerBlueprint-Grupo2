@@ -42,7 +42,7 @@
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return remove();" class="btn btn-danger btn-fill btn-sm mr-2" title="Eliminar">
+                                        <button type="submit" class="btn btn-danger btn-fill btn-sm mr-2" title="Eliminar">
                                         <i class="nc-icon nc-simple-remove"></i>
                                     </button>
                                 </form>
@@ -76,4 +76,19 @@
             </table>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/alerts.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('form[id^="form-delete-"]').forEach(function(form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    Alerts.confirmDelete(form);
+                });
+            });
+        });
+    </script>
 @endsection

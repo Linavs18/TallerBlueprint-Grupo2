@@ -20,12 +20,11 @@ class TaskStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'project_id' => ['required', 'integer', 'exists:projects.id,id'],
+            'project_id' => ['required', 'integer', 'exists:projects,id'],
             'name' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'status' => ['required', 'in:pendiente,en_progreso,completado'],
+            'status' => ['required', 'in:pendiente,en_progreso,completado,cancelado'],
             'due_date' => ['nullable', 'date'],
-            'belongsTo' => ['required', 'string'],
         ];
     }
 

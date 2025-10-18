@@ -6,6 +6,7 @@ use App\Http\Requests\TaskStoreRequest;
 use App\Http\Requests\TaskUpdateRequest;
 use App\Models\Task;
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -40,8 +41,10 @@ class TaskController extends Controller
 
     public function edit(Task $task)
     {
+        $projects = Project::all();
         return view('task.edit', [
             'task' => $task,
+            'projects' => $projects,
         ]);
     }
 
