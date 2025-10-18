@@ -12,12 +12,24 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
+
     public function index(Request $request)
     {
         $users = User::all();
-
         return view('user.index', [
             'users' => $users,
+        ]);
+    }
+
+    public function create()
+    {
+        return view('user.create');
+    }
+
+    public function edit(User $user)
+    {
+        return view('user.edit', [
+            'user' => $user,
         ]);
     }
 

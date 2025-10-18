@@ -21,10 +21,8 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'password', 'max:255'],
-            'hasMany' => ['required', 'string'],
-            'belongsToMany' => ['required', 'string'],
+            'email' => ['required','email','max:255','unique:users,email,' . $this->user->id],
+            'password' => ['nullable', 'string', 'min:6', 'max:255'],
         ];
     }
 }
