@@ -22,10 +22,7 @@ class ProjectUpdateRequest extends FormRequest
         return [
             'title' => ['required', 'string', 'max:255'],
             'description' => ['nullable', 'string'],
-            'owner_id' => ['required', 'integer', 'exists:users.id,id'],
-            'belongsTo' => ['required', 'string'],
-            'hasMany' => ['required', 'string'],
-            'belongsToMany' => ['required', 'string'],
+            'owner_id' => ['required', 'integer', 'exists:users,id'],
         ];
     }
 

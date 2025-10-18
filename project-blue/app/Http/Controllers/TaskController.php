@@ -14,7 +14,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::with('project')->get();
 
         return view('task.index', [
             'tasks' => $tasks,
@@ -23,7 +23,10 @@ class TaskController extends Controller
 
     public function create()
     {
-        return view('task.create');
+        $projects = \App\Models\Project::all();
+        return view('task.create', [
+            'projects' => $projects,
+        ]);
     }
 
     public function store(TaskStoreRequest $request)

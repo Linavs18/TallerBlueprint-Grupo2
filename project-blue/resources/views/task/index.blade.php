@@ -29,7 +29,7 @@
                             <td>{{ $task['description'] }}</td>
                             <td>{{ $task['status'] }}</td>
                             <td>{{ $task['due_date'] }}</td>
-                            <td>{{ $task -> project -> title }}</td>
+                            <td>{{ $task->project ? $task->project->title : 'Sin Proyecto' }}</td>
                             <td>
                                 <a href="" class="btn btn-info btn-fill btn-sm mr-2" title="Ver"
                                 data-toggle="modal" data-target="#modalShow{{ $task['id'] }}">
@@ -61,7 +61,7 @@
                                             <p><strong>Descripcion:</strong>{{ $task['description'] }}</p>
                                             <p><strong>Estado:</strong>{{ $task['status'] }}</p>
                                             <p><strong>Fecha Vencimiento:</strong>{{ $task['due_date'] }}</p>
-                                            <p><strong>Projecto:</strong>{{ $task->project -> title }}</p>
+                                            <p><strong>Projecto:</strong>{{ $task->project ? $task->project->title : 'Sin Proyecto' }}</p>
                                         </div>
                                         <div class="modal-footer justify-content-center">
                                             <button type="button" class="btn btn-link btn-simple" data-dismiss="modal">Cerrar</button>
